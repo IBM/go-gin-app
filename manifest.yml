@@ -1,0 +1,11 @@
+---
+applications:
+- instances: 1
+  timeout: 180
+  name: goginapp
+  buildpack: https://github.com/cloudfoundry/go-buildpack.git#v1.9.2
+  memory: 256M
+  domain: not-used.net
+  host: not-used
+  env:
+    GOPACKAGENAME : goginapp
