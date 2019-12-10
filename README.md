@@ -14,7 +14,7 @@
 </p>
 
 
-# Create and deploy a Go CLoud Application using Gin
+# Create and deploy a Go Cloud Application using Gin
 
 > We have similar applications available for [Node.js](https://github.com/IBM/nodejs-web-app), [Java Spring](https://github.com/IBM/spring-web-app), [Swift](https://github.com/IBM/swift-web-app), Python [Django](https://github.com/IBM/django-web-app) and [Flask](https://github.com/IBM/flask-web-app), and [Java Liberty](https://github.com/IBM/java-liberty-web-app).
 
