@@ -38,7 +38,7 @@ You can [deploy this application to IBM Cloud](https://cloud.ibm.com/developer/a
     </a>
 </p>
 
-Use the button above to deploy this same application to IBM Cloud. This option will create a deployment pipeline, complete with a hosted Git lab project and DevOps toolchain. You will have the option of deploying to either Cloud Foundry or a Kubernetes cluster. [IBM Cloud DevOps](https://www.ibm.com/cloud/devops) services provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud. 
+Use the button above to deploy this same application to IBM Cloud. This option will create a deployment pipeline, complete with a hosted Git lab project and DevOps toolchain. You will have the option of deploying to either Cloud Foundry or a Kubernetes cluster. [IBM Cloud DevOps](https://www.ibm.com/cloud/devops) services provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud.
 
 Also, this application comes with the following capabilities:
 - [Swagger UI](http://swagger.io/swagger-ui/) running on: `/explorer`
@@ -49,26 +49,20 @@ Also, this application comes with the following capabilities:
 
 To get started building this web application locally, you can either run the application natively or use the [IBM Cloud Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started) for containerization and easy deployment to IBM Cloud.
 
-All of your `dep` dependencies are stored inside of `Gopkg.toml`.
+All of your `go` dependencies are listed in `go.mod`.
 
 #### Native Application Development
 
 - Install [Go](https://golang.org/dl/)
-- Install [dep](https://github.com/golang/dep)
 
-In order for Go applications to run locally, they must be placed in the following path:
+In order for Go applications to run anywhere including your $GOPATH/src
 ```
-$GOPATH/src/goginapp
+export GO111MODULE=on
 ```
 
-Import dependencies from Gopkg.toml using dep:
+Fetch and install dependencies listed in go.mod:
 ```bash
-dep ensure
-```
-
-Once the dependencies have been installed, you can compile a Go project with:
-```bash
-go install
+go build ./...
 ```
 
 To run your application locally:

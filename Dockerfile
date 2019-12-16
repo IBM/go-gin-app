@@ -20,10 +20,9 @@ RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 WORKDIR $GOPATH/src/goginapp/
 
 # Install dependencies
-RUN go get -u github.com/golang/dep/...
-RUN go get -u github.com/derekparker/delve/cmd/dlv/...
+ENV GO111MODULE=on
 COPY . ./
-RUN if test -e "Gopkg.toml"; then dep ensure -v; fi
+RUN if test -e "go.mod"; then go build ./...; fi
 
 ENV PORT 8080
 ENV GIN_MODE release
