@@ -1,0 +1,44 @@
+FROM registry.access.redhat.com/ubi8/ubi
+
+RUN yum -y install --disableplugin=subscription-manager wget git \
+    && yum --disableplugin=subscription-manager clean all
+
+# Grab go version 1.13
+RUN wget https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz
+
+# Install go version 1.13
+RUN tar -C /usr/local -xzf go1.13.3.linux-amd64.tar.gz
+
+# Setup go environment variables
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+
+# Configure application working directories
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+
+EXPOSE 8080
+EXPOSE 8181
+
+# Disables C compilation
+ENV CGO_ENABLED=0
+
+# Change working directory
+WORKDIR $GOPATH/src/goginapp/
+
+# Install dependencies
+ENV GO111MODULE=on
+COPY . ./
+RUN if test -e "go.mod"; then go build ./...; fi
+
+
+COPY run-dev $GOPATH/bin
+RUN chmod 777 $GOPATH/bin/run-dev
+RUN chmod 777 $GOPATH/src/goginapp/
+
+CMD ["/bin/bash"]
+
+ARG bx_dev_user=root
+ARG bx_dev_userid=1000
+RUN BX_DEV_USER=$bx_dev_user
+RUN BX_DEV_USERID=$bx_dev_userid
+RUN if [ "$bx_dev_user" != root ]; then adduser -D -s /bin/bash -u $bx_dev_userid $bx_dev_user; fi
