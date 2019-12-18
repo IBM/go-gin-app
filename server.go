@@ -1,10 +1,10 @@
 package main
 
 import (
-	"goginapp/routers"
+	"github.com/IBM/go-gin-app/routers"
 	// "goginapp/plugins" if you create your own plugins import them here
-	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/static"
+	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"os"
 )
@@ -36,7 +36,7 @@ func main() {
 	router.GET("/", routers.Index)
 	router.NoRoute(routers.NotFoundError)
 	router.GET("/500", routers.InternalServerError)
-	
+
 	// Health endpoint
 	router.GET("/health", routers.HealthGET)
 
