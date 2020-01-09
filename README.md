@@ -16,7 +16,7 @@
 
 # Create and deploy a Go Cloud Application using Gin
 
-> We have similar applications available for [Node.js](https://github.com/IBM/node-express-app), [Java Spring](https://github.com/IBM/java-spring-app), [Python Flask](https://github.com/IBM/python-flask-app), [Python Django](https://github.com/IBM/python-django-app), [Swift](https://github.com/IBM/swift-kitura-app), and [Java Liberty](https://github.com/IBM/java-liberty-app).
+> We have applications available for [Node.js Express](https://github.com/IBM/node-express-app), [Go Gin](https://github.com/IBM/go-gin-app), [Python Flask](https://github.com/IBM/python-flask-app), [Python Django](https://github.com/IBM/python-django-app), [Java Spring](https://github.com/IBM/java-spring-app), [Java Liberty](https://github.com/IBM/java-liberty-app), and [Swift Kitura](https://github.com/IBM/swift-kitura-app).
 
 In this sample web application, you will create a Go cloud application using Gin. This application contains an opinionated set of files for web serving:
 
@@ -28,12 +28,12 @@ This application also enables a starting place for a Go microservice using Gin. 
 
 ## Steps
 
-You can [deploy this application to IBM Cloud](https://cloud.ibm.com/developer/appservice/create-app?starterKit=a52f700e-8bc9-365f-9e42-a17311d9c62e) or [build it locally](#building-locally) by cloning this repo first. Once your app is live, you can access the `/health` endpoint to build out your cloud native application.
+You can [deploy this application to IBM Cloud](https://cloud.ibm.com/developer/appservice/starter-kits/go-gin-app) or [build it locally](#building-locally) by cloning this repo first. Once your app is live, you can access the `/health` endpoint to build out your cloud native application.
 
 ### Deploying to IBM Cloud
 
 <p align="center">
-    <a href="https://cloud.ibm.com/developer/appservice/starter-kits/478f8442-3170-35ff-a4bc-9ae3f121e802/go-gin-app">
+    <a href="https://cloud.ibm.com/developer/appservice/starter-kits/go-gin-app">
     <img src="https://cloud.ibm.com/devops/setup/deploy/button_x2.png" alt="Deploy to IBM Cloud">
     </a>
 </p>
