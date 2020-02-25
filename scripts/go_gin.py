@@ -14,12 +14,9 @@ time.sleep(3)
 
 # Verify the expected content is present
 # TODO change this when we change the landing page
-title_text = driver.find_elements_by_xpath('//title')[0].text
-if len(title_text) == 0:
-    sys.exit("Experience Test Failed: no title texts found")
+title_text = driver.title
+print("The title text is: {}".format(title_text))
+if title_text == "Swagger UI":
+    print("Experience Test Successful")
 else:
-    print("The title text is: {}".format(title_text))
-    if title_text == "Swagger UI":
-        print("Experience Test Successful")
-    else:
-        sys.exit("Experience Test Failed: unexpected title text {}".format(title_text))
+    sys.exit("Experience Test Failed: unexpected title text {}".format(title_text))
