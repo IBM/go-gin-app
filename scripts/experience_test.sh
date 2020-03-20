@@ -15,4 +15,4 @@ echo "Installing Selenium Python package..."
 pip install selenium
 
 echo "Running UI test using Selenium..."
-python3 go_gin.py
+python3 experience_test.py
