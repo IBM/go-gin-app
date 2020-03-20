@@ -70,7 +70,7 @@ To run your application locally:
 go run server.go
 ```
 
-Your sources will be compiled to your `$GOPATH/bin` directory. Your application will be running at `http://localhost:8080`.
+Your sources will be compiled to your `$GOPATH/bin` directory. Your application will be running at `http://localhost:8080`. You can also verify the state of your locally running application using the Selenium UI test script included in the `scripts` directory.
 
 #### IBM Cloud Developer Tools
 
