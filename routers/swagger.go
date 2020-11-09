@@ -5,8 +5,8 @@ import (
 	"net/http"
 )
 
-func SwaggerExplorerRedirect(c *gin.Context) {
-	c.Redirect(http.StatusPermanentRedirect, "/explorer/")
+func SwaggerDocRedirect(c *gin.Context) {
+	c.Redirect(http.StatusPermanentRedirect, "/swagger/api-docs/index.html")
 }
 
 func SwaggerAPI(c *gin.Context) {

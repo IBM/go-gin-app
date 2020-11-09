@@ -7,6 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"os"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func port() string {
@@ -26,11 +28,12 @@ func main() {
 	router.RedirectTrailingSlash = false
 
 	// Swagger endpoints
-	router.GET("/explorer", routers.SwaggerExplorerRedirect)
-	router.GET("/swagger/api", routers.SwaggerAPI)
-	router.Use(static.Serve("/explorer/", static.LocalFile("./public/swagger-ui/", true)))
+	url := ginSwagger.URL("/swagger.yaml") // The url pointing to API definition
+	router.GET("/swagger/api-docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
+	router.GET("/swagger/api-docs", routers.SwaggerDocRedirect)
 
 	// Static webpage content endpoints
+	router.GET("/swagger.yaml", routers.SwaggerAPI)
 	router.LoadHTMLGlob("public/*.html")
 	router.Use(static.Serve("/", static.LocalFile("./public", false)))
 	router.GET("/", routers.Index)
