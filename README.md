@@ -20,6 +20,7 @@
 
 In this sample web application, you will create a Go cloud application using Gin. This application contains an opinionated set of files for web serving:
 
+
 - `public/index.html`
 - `public/404.html`
 - `public/500.html`
