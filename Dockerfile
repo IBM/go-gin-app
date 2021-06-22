@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8:8.3
+FROM registry.access.redhat.com/ubi8:8.4
 
 RUN yum -y install --disableplugin=subscription-manager wget git \
     && yum --disableplugin=subscription-manager clean all
