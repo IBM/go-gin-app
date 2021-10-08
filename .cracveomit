@@ -1,0 +1,6 @@
+[
+    {
+        "cve": "SNYK-GOLANG-GITHUBCOMGINGONICGIN-1041736",
+        "untilRemediationAvailable": true
+    }
+]
