@@ -112,7 +112,7 @@ ibmcloud dev debug
 
 ## CRA Scanning 
 
-This repository includes a `.cracveomit` file used by Code Risk Analyzer (CRA) in IBM Cloud Continuous Delivery. This file helps address vulnerabilities found by CRA until they have a remediation available, at which point the vulnerabilities will be addressed in their respective package versions. CRA helps keep the code in this repository free of known vulnerabilities, which helps make applications built on this code more secure. If you are not using CRA, you can safely ignore this file.
+This repository includes a `.cracveomit` file that is used by Code Risk Analyzer (CRA) in IBM Cloud Continuous Delivery. This file helps address vulnerabilities that are found by CRA until a remediation is available, at which point the vulnerabilities will be addressed in the respective package versions. CRA keeps the code in this repository free of known vulnerabilities, and therefore helps make applications that are built on this code more secure. If you are not using CRA, you can safely ignore this file.
 
 ## Next steps
 * Learn more about augmenting your Go applications on IBM Cloud with the [Go Programming Guide](https://cloud.ibm.com/docs/go?topic=go-getting-started).
