@@ -4,10 +4,10 @@ RUN yum -y install --disableplugin=subscription-manager wget git \
     && yum --disableplugin=subscription-manager clean all
 
 # Grab go version 1.13
-RUN wget https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz
+RUN wget https://dl.google.com/go/go1.15.3.linux-amd64.tar.gz
 
 # Install go version 1.13
-RUN tar -C /usr/local -xzf go1.13.3.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go1.15.3.linux-amd64.tar.gz
 
 # Setup go environment variables
 ENV GOPATH /go
@@ -34,6 +34,7 @@ RUN if test -e "go.mod"; then go build ./...; go clean -modcache; fi
 COPY run-dev $GOPATH/bin
 RUN chmod 777 $GOPATH/bin/run-dev
 RUN chmod 777 $GOPATH/src/goginapp/
+RUN chmod -R +x $GOPATH/src/goginapp/
 
 CMD ["/bin/bash"]
 
