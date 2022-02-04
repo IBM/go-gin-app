@@ -3,11 +3,11 @@ FROM registry.access.redhat.com/ubi8:8.5
 RUN yum -y install --disableplugin=subscription-manager wget git \
     && yum --disableplugin=subscription-manager clean all
 
-# Grab go version 1.15
-RUN wget https://dl.google.com/go/go1.15.3.linux-amd64.tar.gz
+# Grab go version 1.17
+RUN wget https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz
 
-# Install go version 1.15
-RUN tar -C /usr/local -xzf go1.15.3.linux-amd64.tar.gz
+# Install go version 1.17
+RUN tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
 
 # Setup go environment variables
 ENV GOPATH /go
