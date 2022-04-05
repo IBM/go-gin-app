@@ -9,12 +9,18 @@ RUN wget https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz
 # Install go version 1.17
 RUN tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
 
+ARG bx_dev_user=root
+ARG bx_dev_userid=0
+RUN BX_DEV_USER=$bx_dev_user
+RUN BX_DEV_USERID=$bx_dev_userid
+RUN if [ $bx_dev_user != "root" ]; then useradd -ms /bin/bash -u $bx_dev_userid $bx_dev_user; fi
+
 # Setup go environment variables
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 
 # Configure application working directories
-RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" "$GOPATH/pkg" && chmod -R 777 "$GOPATH"
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" "$GOPATH/pkg"
 
 EXPOSE 8080
 EXPOSE 8181
@@ -29,17 +35,12 @@ WORKDIR $GOPATH/src/goginapp/
 ENV GO111MODULE=on
 COPY . ./
 RUN if test -e "go.mod"; then go build ./...; go clean -modcache; fi
+# set ownership on GOPATH so that the current user can execute
+RUN chown -R $bx_dev_user "$GOPATH"
 
 
 COPY run-dev $GOPATH/bin
-RUN chmod 777 $GOPATH/bin/run-dev
-RUN chmod 777 $GOPATH/src/goginapp/
+RUN chmod +x $GOPATH/bin/run-dev
 RUN chmod -R +x $GOPATH/src/goginapp/
 
 CMD ["/bin/bash"]
-
-ARG bx_dev_user=root
-ARG bx_dev_userid=1000
-RUN BX_DEV_USER=$bx_dev_user
-RUN BX_DEV_USERID=$bx_dev_userid
-RUN if [ $bx_dev_user != "root" ]; then useradd -ms /bin/bash -u $bx_dev_userid $bx_dev_user; fi
