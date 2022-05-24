@@ -1,0 +1,6 @@
+[
+  {
+    "cve": "SNYK-GOLANG-GOPKGINYAMLV2-2840885",
+    "untilRemediationAvailable": true
+  }
+]
