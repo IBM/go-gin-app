@@ -1,20 +1,7 @@
-FROM registry.access.redhat.com/ubi8:8.6
-
-RUN yum -y install --disableplugin=subscription-manager wget git \
-    && yum --disableplugin=subscription-manager clean all
-
-# Grab go version 1.17
-RUN wget https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz
-
-# Install go version 1.17
-RUN tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
+FROM registry.access.redhat.com/ubi8/go-toolset:1.17.7
 
 # Setup go environment variables
 ENV GOPATH /go
-ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
-
-# Configure application working directories
-RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
 # Change working directory
 WORKDIR $GOPATH/src/goginapp/
@@ -22,6 +9,9 @@ WORKDIR $GOPATH/src/goginapp/
 # Install dependencies
 ENV GO111MODULE=on
 COPY . ./
+USER root
+RUN chmod -R 777 /go
+USER default
 RUN if test -e "go.mod"; then go build ./...; fi
 
 ENV PORT 8080
